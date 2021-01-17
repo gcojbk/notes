@@ -1,0 +1,66 @@
+Go变量声明：
+	1、指定变量类型，如果没有初始化，则默认初始化为0
+	var v_name v_type
+	v_name = value
+	示例：var a = "RUNOOB"
+	      var b int
+	2、根据值自行判定变量类型
+	var d = true
+	3、省略var，注意:=左侧如果没有产生新的变量就会出现编译错误。
+	v_name := value
+	var intVal int 
+	示例：intVal :=1 // 这时候会产生编译错误
+		  intVal,intVal1 := 1,2 // 此时不会产生编译错误，因为有声明新的变量，因为 := 是一个声明语句
+
+Go常量
+	1、常量定义
+	const identifier [type] = value
+		显式类型定义： const b string = "abc"
+		隐式类型定义： const b = "abc"
+	2、iota（特殊常量，是一个可以被编译器修改的常量）
+		iota 在 const关键字出现时将被重置为 0(const 内部的第一行之前)，const 中每新增一行常量声明将使 iota 计数一次(iota 可理解为 const 语句块中的行索引)。
+		示例：
+		const (
+			a = iota   //0
+			b = iota   //1
+			c = iota   //2
+			d = "ha"   //独立值，iota += 1
+            e          //"ha"   iota += 1
+            f = 100    //iota +=1
+            g          //100  iota +=1
+			h = itoa   //7
+		)  
+		
+G0数组
+1、数组声明
+	var variable_name [SIZE] variable_type
+	var balance [10] float32
+2、数组初始化
+	var balance = [5]float32{1000.0, 2.0, 3.4, 7.0, 50.0}
+	如果忽略 [] 中的数字不设置数组大小，Go 语言会根据元素的个数来设置数组的大小：
+	var balance = [...]float32{1000.0, 2.0, 3.4, 7.0, 50.0}
+	balance[4] = 50.0
+
+Range
+Go 语言中 range 关键字用于 for 循环中迭代数组(array)、切片(slice)、通道(channel)或集合(map)的元素。在数组和切片中它返回元素的索引和索引对应的值，在集合中返回 key-value 对。
+示例：	
+	1、遍历数组
+	nums := []int{2, 3, 4}
+	sum := 0
+	for _, num := range nums {
+		sum += num
+	}//在数组上使用range将传入index和值两个变量。上面那个例子我们不需要使用该元素的序号，所以我们使用空白符"_"省略了。有时侯我们确实需要知道它的索引。
+	2、遍历map
+    kvs := map[string]string{"a": "apple", "b": "banana"}
+    for k, v := range kvs {
+        fmt.Printf("%s -> %s\n", k, v)
+    }
+	
+
+
+
+
+
+
+
+
